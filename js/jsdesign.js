@@ -1,3 +1,4 @@
+// Nav bar section js starts
 const menuIcon = document.getElementById('menu-icon');
 const dropdownMenu = document.getElementById('dropdown-menu');
 
@@ -11,3 +12,4 @@ menuIcon.addEventListener('click', function (){
     dropdownMenu.classList.remove('dropdown-enter', 'dropdown-enter-active');
   }
 });
+// Nav bar section js ends

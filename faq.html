@@ -98,7 +98,12 @@
     <br>
     <!-- ==================Nav bar section ends==================  -->
     <main>
-        <div class="collapse collapse-arrow bg-base-200">
+        <div class="flex justify-center lg:justify-start gap-1">
+            <h1 class="text-4xl font-bold ml-3 py-5 px-5">Important FAQ</h1>
+            <img src="./images/customer-service (1).png" alt="" class="w-9 h-9 mt-5">
+        </div>
+        <!-- No 1  -->
+        <div class="collapse collapse-arrow bg-white px-5 border-2 border-solid border-gray-300">
             <input type="radio" name="my-accordion-2" checked="checked" />
             <div class="collapse-title text-xl font-medium">What is Document Object Model (DOM)?</div>
             <div class="collapse-content">
@@ -107,7 +112,9 @@
                     and manipulate the content, structure, and styles of a web document dynamically.</p>
             </div>
         </div>
-        <div class="collapse collapse-arrow bg-base-200">
+        
+        <!-- No 2  -->
+        <div class="collapse collapse-arrow bg-white px-5 border-2 border-solid border-gray-300">
             <input type="radio" name="my-accordion-2" />
             <div class="collapse-title text-xl font-medium">How do you select an element for DOM?</div>
             <div class="collapse-content">
@@ -116,7 +123,9 @@
                     attributes.</p>
             </div>
         </div>
-        <div class="collapse collapse-arrow bg-base-200">
+        
+        <!-- No 3  -->
+        <div class="collapse collapse-arrow bg-white px-5 border-2 border-solid border-gray-300">
             <input type="radio" name="my-accordion-2" />
             <div class="collapse-title text-xl font-medium">What is event delegation in the context of the DOM and why
                 is it useful?</div>
@@ -132,21 +141,27 @@
                     The parent element can listen for the event and determine which child element triggered it by
                     inspecting the event.target property.
                     Using conditions, you can apply logic only to specific child elements or types of events. <br>
-                    Event delegation is useful because it simplifies event handling, improves performance, and makes your code more maintainable and scalable.
-                </p>
-            </div>
-            <div class="collapse collapse-arrow bg-base-200">
-                <input type="radio" name="my-accordion-2" checked="checked" />
-                <div class="collapse-title text-xl font-medium">How do you manipulate an element's attributes and styles using the DOM?</div>
-                <div class="collapse-content">
-                    <p>Using getAttribute(), setAttribute(), and removeAttribute() to manage element attributes,
-                     classList methods (add, remove, toggle, contains) for class manipulation
-                     the style property to set or modify inline styles directly,
-                    getComputedStyle() to retrieve computed styles applied to an element one can  dynamically combining these techniques allows to create interactive and visually engaging webpages.</p>
-                </div>
+                    Event delegation is useful because it simplifies event handling, improves performance, and makes
+                    your code more maintainable and scalable.</p>
             </div>
         </div>
+        
+        <!-- No-4  -->
+        <div class="collapse collapse-arrow bg-white px-5 border-2 border-solid border-gray-300">
+            <input type="radio" name="my-accordion-2" />
+            <div class="collapse-title text-xl font-medium">How do you manipulate an element's attributes and styles
+                using the DOM?</div>
+            <div class="collapse-content">
+                <p>Using getAttribute(), setAttribute(), and removeAttribute() to manage element attributes,
+                    classList methods (add, remove, toggle, contains) for class manipulation
+                    the style property to set or modify inline styles directly,
+                    getComputedStyle() to retrieve computed styles applied to an element one can dynamically combining
+                    these techniques allows to create interactive and visually engaging webpages.</p>
+            </div>
+        </div>
+        <br>
     </main>
+
 
     <script src="js/jsdesign.js"></script>
 </body>

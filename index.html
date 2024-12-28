@@ -62,8 +62,7 @@
       <!-- nav bar right starts here  -->
       <div class="navbar-end">
         <div class="hidden lg:block">
-          <div
-            class="flex justify-center items-center gap-2 lg:mr-10 text-xl font-medium lg:text-2xl mt-2 py-2 cursor-pointer">
+          <div class="flex justify-center items-center gap-2 lg:mr-10 text-xl font-medium lg:text-2xl mt-2 py-2">
             <div>
               <img src="./images/coin.png" alt="">
             </div>
@@ -79,7 +78,7 @@
 
     <!-- navigation buttons   -->
     <div class="flex justify-center items-center py-8">
-      <button class="btn btn-primary mr-4 bg-[#B4F461] border-none text-xl text-black">Donation</button>
+      <button class="btn mr-4 bg-[#B4F461] border-none text-xl text-black">Donation</button>
       <button class="btn btn-outline text-xl text-black">History</button>
     </div>
 
@@ -107,9 +106,9 @@
           <img src="./images/noakhali.png" alt="">
           <div>
             <div
-              class="w-32 h-18 bg-slate-100 rounded-lg flex justify-center items-center text-black mb-1 gap-2 px-2 py-2">
-              <img src="./images/coin.png" alt="Icon" class="w-5 h-5">
-              <span>0 BDT</span>
+              class="w-32 h-18 bg-slate-200 rounded-lg flex justify-center items-center text-black mb-1 gap-2 px-2 py-2">
+              <img src="./images/coin.png" alt="" class="w-5 h-5">
+              <span id="fund-balance">0 BDT</span>
             </div>
             <h1 class="text-3xl font-bold">Donate for Flood at Noakhali, Bangladesh</h1>
             <p class="py-6 text-xl">
@@ -118,9 +117,11 @@
               makes difference. Please join us in supporting the relief efforts and making a positive impact on the
               lives of those in need.
             </p>
-            <input type="text" placeholder="Write Donation Amount" class="input input-bordered w-full " />
-            <button class="btn btn-primary w-full text-black border-none bg-[#B4F461] mt-4 ">Donate Now</button>
-          </div>
+            <input id="input-donation-money" type="text" placeholder="Write Donation Amount"
+              class="input input-bordered w-full" required />
+            <button onclick="my_modal_1.showModal()" id="btn-donation"
+              class="btn w-full text-black border-none bg-[#B4F461] mt-4">Donate Now</button>
+           </div>
         </div>
       </div>
     </div>
@@ -132,8 +133,8 @@
           <img src="./images/feni.png" alt="">
           <div>
             <div
-              class="w-32 h-18 bg-slate-100 rounded-lg flex justify-center items-center text-black mb-1 gap-2 px-2 py-2">
-              <img src="./images/coin.png" alt="Icon" class="w-5 h-5">
+              class="w-32 h-18 bg-slate-200 rounded-lg flex justify-center items-center text-black mb-1 gap-2 px-2 py-2">
+              <img src="./images/coin.png" alt="" class="w-5 h-5">
               <span>600 BDT</span>
             </div>
             <h1 class="text-3xl font-bold">Donate for Flood Relief in Feni,Bangladesh</h1>
@@ -144,8 +145,9 @@
               aftermath of this disaster. Every contribution counts towards making a real difference. Please consider
               donating today to assist those in urgent need.
             </p>
-            <input type="text" placeholder="Write Donation Amount" class="input input-bordered w-full " />
-            <button class="btn btn-primary w-full text-black border-none bg-[#B4F461] mt-4 ">Donate Now</button>
+            <input id="input-donate-money" type="text" placeholder="Write Donation Amount"
+              class="input input-bordered w-full" required />
+            <button onclick="my_modal_1.showModal()" class="btn w-full text-black border-none bg-[#B4F461] mt-4">Donate Now</button>
           </div>
         </div>
       </div>
@@ -158,8 +160,8 @@
           <img src="./images/quota-protest.png" alt="">
           <div>
             <div
-              class="w-32 h-18 bg-slate-100 rounded-lg flex justify-center items-center text-black mb-1 gap-2 px-2 py-2">
-              <img src="./images/coin.png" alt="Icon" class="w-5 h-5">
+              class="w-32 h-18 bg-slate-200 rounded-lg flex justify-center items-center text-black mb-1 gap-2 px-2 py-2">
+              <img src="./images/coin.png" alt="" class="w-5 h-5">
               <span>2400 BDT</span>
             </div>
             <h1 class="text-3xl font-bold">Aid for Injured in the Quota Movement</h1>
@@ -171,12 +173,23 @@
               in their recovery. Please consider making a donation to support these brave individuals in their time of
               need.
             </p>
-            <input type="text" placeholder="Write Donation Amount" class="input input-bordered w-full " />
-            <button class="btn btn-primary w-full text-black border-none bg-[#B4F461] mt-4 ">Donate Now</button>
+            <input type="text" placeholder="Write Donation Amount" class="input input-bordered w-full" required />
+            <button onclick="my_modal_1.showModal()" class="btn w-full text-black border-none bg-[#B4F461] mt-4 ">Donate Now</button>
           </div>
         </div>
       </div>
     </div>
+    <!-- modal -->
+    <dialog id="my_modal_1" class="modal">
+      <form method="dialog" class="modal-box px-5 py-10 flex flex-col justify-center items-center">
+        <h2 class="font-bold text-4xl my-5">Congrats!</h2>
+        <img src="./images/coin.png" alt="">
+        <div class="text-center py-3">You Have Donated for Humankind
+        </div>
+        <p class="text-center text-2xl font-bold py-2">Successfully</p>
+        <button class="btn my-5">close confirmation</button>
+      </form>
+    </dialog>
     <!-- Donation Section Ends Here  -->
     <br>
     <br>
@@ -184,6 +197,5 @@
   <!-- ========================Main Ends====================  -->
   <script src="js/jsdesign.js"></script>
 </body>
-<a href=""></a>
 
 </html>

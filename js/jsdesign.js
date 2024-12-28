@@ -13,3 +13,21 @@ menuIcon.addEventListener('click', function (){
   }
 });
 // Nav bar section js ends
+
+// Donation section js starts 
+
+// add event handler 
+document.getElementById('btn-donation')
+  .addEventListener('click', function(event){
+    event.preventDefault(); 
+    
+    
+    // adding money 
+    const addDonationInput = document.getElementById('input-donation-money').value;
+    
+  });
+  // get the current balance 
+  const balance = document.getElementById('fund-balance').innerText;
+  
+  
+// Donation section js ends 

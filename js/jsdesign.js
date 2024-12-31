@@ -19,7 +19,7 @@ menuIcon.addEventListener('click', function (){
 // add event handler 
 document.getElementById('btn-donation')
   .addEventListener('click', function(event){
-    event.preventDefault(); 
+    
     
     
     // adding money 

@@ -26,3 +26,24 @@ historySection.innerHTML = `
 
 const donationHistoryList = document.getElementById("donation-history");
 
+// donation handle process  
+function handleDonation (section, inputElement, balanceElement) {
+    const donationAmount = parseFloat (inputElement.value);
+    const websiteBalance = parseFloat(websiteBalanceElement.textContent);
+
+    // making donation valid 
+    if (isNaN (donationAmount) || donationAmount <= 0){
+        alert ("Oops!! Please Give a Valid Input!!");
+        return;
+    }
+
+    if (donationAmount > websiteBalance) {
+        alert ("Oops!! You Exceed The Balance!! Try Again Later!!");
+        return;
+    }
+}
+// update balance 
+
+const currentSectionBalance = parseFloat(balanceElement.textContent);
+balanceElement.textContent = (currentSectionBalance + donationAmount);
+websiteBalanceElement.textContent = (websiteBalance - donationAmount);

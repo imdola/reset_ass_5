@@ -1,4 +1,39 @@
-// Main Section js code starts 
+// Nav bar section js starts
+const menuIcon = document.getElementById("menu-icon");
+const dropdownMenu = document.getElementById("dropdown-menu");
+const websiteBalanceElement = document.getElementById("website-balance");
+const websiteBalanceDropdownElement = document.getElementById("website-balance-dropdown");
+
+// Close the dropdown menu when clicking outside
+function closeDropdownOnOutsideClick(event) {
+  if (!dropdownMenu.contains(event.target) &&
+    event.target !== menuIcon) {
+    dropdownMenu.classList.add("hidden");
+  }
+}
+
+menuIcon.addEventListener("click", function () {
+  dropdownMenu.classList.toggle("hidden");
+});
+
+document.addEventListener("click", closeDropdownOnOutsideClick);
+
+// Ensure balance syncing between website-balance and website-balance-dropdown
+function syncBalances() {
+  const currentBalance = parseFloat(websiteBalanceElement.textContent);
+  websiteBalanceDropdownElement.textContent = currentBalance;
+}
+
+// Run sync initially and whenever balance updates
+syncBalances();
+
+// Observe changes in website-balance and update website-balance-dropdown
+const observer = new MutationObserver(syncBalances);
+observer.observe(websiteBalanceElement, { childList: true });
+
+
+
+// Main js code starts 
 
 const noakhaliBalanceElement = document.getElementById("noakhali-balance");
 const feniBalanceElement = document.getElementById("feni-balance");
@@ -15,35 +50,145 @@ const quotaButton = document.getElementById("quota-button");
 const modal = document.getElementById("my_modal_1");
 const closeModalButton = document.getElementById("close-modal");
 
-// History Section Making 
+// history section making 
+
 const historySection = document.createElement("div");
 document.body.appendChild(historySection);
 historySection.className = "px-8 py-4";
 historySection.innerHTML = `
-        <div class ="p-6 bg-white rounded-lg drop-shadow">
-            <ul id = "donation-history" class = "space-y-4"></ul>
-         </div>`;
-
+  <div class="p-6 bg-white rounded-lg drop-shadow">
+   <ul id="donation-history" class="space-y-4"></ul>
+  </div>`;
 const donationHistoryList = document.getElementById("donation-history");
 
-// donation handle process  
-function handleDonation (section, inputElement, balanceElement) {
-    const donationAmount = parseFloat (inputElement.value);
-    const websiteBalance = parseFloat(websiteBalanceElement.textContent);
+const mainSection = document.getElementById("main-section");
 
-    // making donation valid 
-    if (isNaN (donationAmount) || donationAmount <= 0){
-        alert ("Oops!! Please Give a Valid Input!!");
-        return;
-    }
+// donation handle common facts
 
-    if (donationAmount > websiteBalance) {
-        alert ("Oops!! You Exceed The Balance!! Try Again Later!!");
-        return;
-    }
+function handleDonation(section, inputElement, balanceElement) {
+  const donationAmount = parseFloat(inputElement.value);
+  const websiteBalance = parseFloat(websiteBalanceElement.textContent);
+
+  //  making donation valid 
+
+  if (isNaN(donationAmount) || donationAmount <= 0) {
+    alert("Oops!! Please Give a Valid Input!!");
+    return;
+  }
+
+  if (donationAmount > websiteBalance) {
+    alert("Oops!! You Exceed The Balance!! Try Again Later!!");
+    return;
+  }
+
+  // update balance 
+
+  const currentSectionBalance = parseFloat(balanceElement.textContent);
+  balanceElement.textContent = (currentSectionBalance + donationAmount);
+  websiteBalanceElement.textContent = (websiteBalance - donationAmount);
+
+  // modal 
+
+  modal.showModal();
+
+  // show donation history 
+
+  const date = new Date();
+  const formattedDate = date.toLocaleString("en-GB", {
+    timeZone: "Asia/Dhaka",
+    weekday: "short", 
+    day: "numeric", 
+    month: "numeric", 
+    year: "numeric", 
+    hour: "2-digit", 
+    minute: "2-digit", 
+    second: "2-digit",
+  });
+  const historyItem = document.createElement("li");
+  historyItem.className =
+    "px-5 py-4 bg-white rounded-lg border border-gray-300 drop-shadow-md";
+  historyItem.innerHTML = `
+    <p class="text-lg"> <b>${donationAmount} BDT</b> is Donated for <span class="font-medium">${section}</span></p>
+    <p class="text-sm text-gray-600">Date: ${formattedDate} (Bangladesh Standard Time)</p>`;
+  donationHistoryList.appendChild(historyItem);
+
+  // input field clear
+  inputElement.value = "";
 }
-// update balance 
 
-const currentSectionBalance = parseFloat(balanceElement.textContent);
-balanceElement.textContent = (currentSectionBalance + donationAmount);
-websiteBalanceElement.textContent = (websiteBalance - donationAmount);
+// attach event listeners to buttons
+noakhaliButton.addEventListener("click", function (){
+  handleDonation(
+    "Donate for Flood at Noakhali, Bangladesh",
+    noakhaliInput,
+    noakhaliBalanceElement
+  );
+});
+
+feniButton.addEventListener("click", function (){
+  handleDonation(
+    "Donate for Flood Relief in Feni, Bangladesh",
+    feniInput,
+    feniBalanceElement
+  );
+});
+
+quotaButton.addEventListener("click", function (){
+  handleDonation(
+    "Aid for Injured in the Quota Movement",
+    quotaInput,
+    quotaBalanceElement
+  );
+});
+
+// Close modal on button click
+closeModalButton.addEventListener("click", function () {
+  modal.close();
+});
+
+// Toggle between Donation and History sections
+const historyButton = document.getElementById("history-button");
+const donationButton = document.getElementById("donation-button");
+
+historyButton.addEventListener("click", function () {
+ 
+  // Show history & hide donation
+  historySection.style.display = "block";
+  mainSection.style.display = "none";
+
+  historyButton.classList.add(
+    "btn",
+    "mr-4",
+    "bg-[#B4F461]",
+    "border-none",
+    "text-xl",
+    "text-black"
+  );
+  historyButton.classList.remove("btn-outline");
+
+  donationButton.classList.remove("mr-4", "bg-[#B4F461]", "border-none");
+  donationButton.classList.add("btn-outline");
+});
+
+donationButton.addEventListener("click", function () {
+  // Show donation section and hide history section
+  mainSection.style.display = "block";
+  historySection.style.display = "none";
+
+  // Highlight the donation button and unhighlight the history button
+  donationButton.classList.add(
+    "btn",
+    "mr-4",
+    "bg-[#B4F461]",
+    "border-none",
+    "text-xl",
+    "text-black"
+  );
+  donationButton.classList.remove("btn-outline");
+
+  historyButton.classList.remove("mr-4", "bg-[#B4F461]", "border-none");
+  historyButton.classList.add("btn-outline");
+});
+
+// Initially set the history section to be hidden
+historySection.style.display = "none";
